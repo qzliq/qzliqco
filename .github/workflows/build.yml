@@ -6,14 +6,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
-        run: brew install dpkg ldid
-      - name: Build
+        run: |
+          brew install dpkg ldid
+      - name: Build Tweak
         run: |
           git clone --recursive https://github.com/theos/theos
           export THEOS=$GITHUB_WORKSPACE/theos
+          mkdir -p packages
           make package
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: package
+          name: tweak-package
           path: packages/*.deb
