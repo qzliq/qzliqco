@@ -12,10 +12,8 @@ jobs:
           git clone --recursive https://github.com/theos/theos
           export THEOS=$GITHUB_WORKSPACE/theos
           make
-          echo "--- عرض الملفات الناتجة ---"
-          find . -name "*.dylib"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tweak-file
-          path: ./**/*.dylib
+          name: qzliqmod
+          path: .theos/obj/debug/qzliqmod.dylib
